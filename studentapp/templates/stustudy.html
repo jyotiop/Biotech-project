@@ -1,0 +1,43 @@
+{% extends 'stuparent.html' %}
+{% block body %}
+<h1 class="text-info fw-bold text-center">Study Material</h1>
+<div class="col-md-10 bg-light mx-auto p-5  rounded-4 ">
+    
+    <div class="table-responsive  ">
+        <table class="table table-light table-hover rounded-3 mt-5 ">
+            <thead class="table-dark  ">
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">Session</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">File</th>
+                    <th scope="col" colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for study in study_materials %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ study.course }}</td>
+                    <td>{{ study.branch }}</td>
+                    <td>{{ study.session }}</td>
+                    <td>{{ study.subject }}</td>
+                    <td>{{ study.file_type }}</td>
+                    <td>
+                        <a href="{{ study.file.url }}" target="_blank" class="btn btn-primary btn-sm" ><i class="fa fa-eye"></i>
+                            View
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

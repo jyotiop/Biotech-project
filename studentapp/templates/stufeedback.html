@@ -1,0 +1,30 @@
+{% extends 'stuparent.html' %}
+{% block body %}
+
+<div class="row">
+  <div class="col-sm-12">
+    <h2 class="text-center text-light mt-2">Feedback</h2>
+    </div>
+    </div>
+<div class="row">
+  <div class="col-md-8 mx-auto">
+    <form action="" method="post" class="w-75 rounded-3 bg-light shadow-lg mx-auto p-5">
+      {%csrf_token%}
+      <h5>Add Feedback</h5>
+      <br>
+      <select name="feedtype" class="form-control border border-dark" id="">
+        <option value="">--Select Feedback Type--</option>
+         <option value="Feedback">Feedback</option>
+          <option value="Suggestion">Suggestion</option>
+           <option value="Complain">Complain</option>
+      </select>
+      <br>
+      <input type="text" placeholder="Enter Title" name="title" id="" class="form-control border border-dark">
+      <br>
+      <textarea name="desc" placeholder="Enter Description" id="" class="form-control border border-dark"></textarea>
+      <br>
+      <input type="submit" value="Add Feedback" class="btn btn-dark form-control">
+    </form>
+  </div>
+</div>
+{% endblock %}

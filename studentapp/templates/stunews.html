@@ -1,0 +1,36 @@
+{% extends 'stuparent.html' %}
+
+
+{% block body %}
+<div class="row mt-5">
+<div class="col-md-8 p-5 mx-auto bg-white rounded-3 table-responsive shadow-lg">
+<h3 class="text-dark mb-4 fw-bold"><i class="fa fa-newspaper text-info me-2 fa-bounce"></i>View News</h3>
+<table class="table table-hover align-middle text-center shadow-sm rounded-3 overflow-hidden">
+   <thead class="table-dark  "></thead>
+      <div class="table-responsive ">
+        <table class="table table-dark table-hover rounded-4 mx-auto ">
+            <thead class="table-dark  ">
+            <thead>
+              <tr>
+                <th scope="col">S.no</th>
+                <th scope="col">Title</th>
+                <th scope="col">Desc</th>
+                <th scope="col" colspan="3">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for n in news %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ n.title }}</td>
+                <td>{{ n.desc }}</td>
+                <td colspan="3" class="text-center"></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+
+ {%endblock%}     

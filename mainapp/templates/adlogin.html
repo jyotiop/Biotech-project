@@ -1,0 +1,23 @@
+{%extends 'parent.html'%}
+{%block body%}
+
+<!-- Admin login form start -->
+
+<div class="row">
+    <div class="col-md-8 mx-auto p-5">
+        <form action="" method="post" class="W-75 mx-auto p-5  rounded-4 shadow-lg bg-dark text-light">
+            {%csrf_token%}
+            <h5>Admin Login</h5>
+            <br>
+            <label for="">Enter Email</label>
+            <input type="email" name="email" class="form-control rounded-pill">
+            <br>
+            <label for="">Enter Password</label>
+            <input type="password" name="password" name="email" class="form-control rounded-pill">
+            <br>
+            <input type="submit" value="Login" class="btn btn-primary form-control">        
+        </form>
+    </div>
+</div>
+<!--Admin login  form end  -->
+{%endblock%}

@@ -1,0 +1,68 @@
+{%extends 'parent.html'%}
+{%block body%}
+<div class="row my-5">
+    <div class="col-md-8 mx-auto p-5">
+        <form action="" enctype="multipart/form-data" method="post" class="w-75 mx-auton p-5 bg-light shadow-lg rounded-5">
+            {%csrf_token%}
+            <h5>Student Registration</h5>
+            <br>
+            <label for="">Enter Your Name :</label>
+            <input type="text" name="name" class="form-control rounded-pill">
+            <br>
+            <label for="">Enter Your F'name :</label>
+            <input type="text" name="fname" class="form-control rounded-pill">
+            <br>
+            <label for="">Enter Your M'name :</label>
+            <input type="text" name="mname" class="form-control rounded-pill">
+            <br>
+            <label for="">Enter Your Email :</label>
+            <input type="email" name="email" class="form-control rounded-pill">
+            <br>
+            <label for="">Enter Your Number :</label>
+            <input type="tel" name="number" class="form-control rounded-pill">
+            <br>
+            <label for="">Enter Your Password :</label>
+            <input type="password" name="password" class="form-control rounded-pill">
+            <br>
+            <label for="">Select Your Gender :</label>
+            <input type="radio" name="gen" value="male" id="" class="form-radio"> Male
+            <input type="radio" name="gen" value="female" id="" class="form-radio"> female
+            <br>
+            <br>
+            <label for="">Select Your Course :</label>
+            <select name="course" id="" class="form-control rounded-pill">
+                <option value="">--Select Course--</option>
+                {%for c in cr%}
+                <option value="{{c.course}}">{{c.course}}</option>
+                {%endfor%}
+            </select>
+            <br>
+            <label for="">Select Your Branch : </label>
+            <select name="branch" id="" class="form-control rounded-pill">
+                <option value="">--Select Branch--</option>
+                {%for b in br%}
+                <option value="{{b.branch}}">{{b.branch}}</option>
+                {%endfor%}
+            </select>
+            <br>
+            <label for="">Select Your Session : </label>
+            <select name="session" id="" class="form-control rounded-pill">
+                <option value="">--Select Session</option>
+                {%for s in se%}
+                <option value="{{s.session}}">{{s.session}}</option>
+                {%endfor%}
+            </select>
+            <br>
+            <label for="">Enter Your Address : </label>
+            <textarea name="address" id="" class="form-control rounded-pill" ></textarea>
+            <br>
+            <label for="">Upload Pic : </label>
+            <input type="file" name="pic" id="" class=" form-control rounded-pill">
+            <br>
+            <input type="submit" value="Register" class="btn btn-primary">
+
+        </form>
+
+    </div>
+</div>
+{%endblock%}
