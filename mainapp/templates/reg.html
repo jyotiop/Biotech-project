@@ -1,68 +1,141 @@
-{%extends 'parent.html'%}
-{%block body%}
-<div class="row my-5">
-    <div class="col-md-8 mx-auto p-5">
-        <form action="" enctype="multipart/form-data" method="post" class="w-75 mx-auton p-5 bg-light shadow-lg rounded-5">
-            {%csrf_token%}
-            <h5>Student Registration</h5>
-            <br>
-            <label for="">Enter Your Name :</label>
-            <input type="text" name="name" class="form-control rounded-pill">
-            <br>
-            <label for="">Enter Your F'name :</label>
-            <input type="text" name="fname" class="form-control rounded-pill">
-            <br>
-            <label for="">Enter Your M'name :</label>
-            <input type="text" name="mname" class="form-control rounded-pill">
-            <br>
-            <label for="">Enter Your Email :</label>
-            <input type="email" name="email" class="form-control rounded-pill">
-            <br>
-            <label for="">Enter Your Number :</label>
-            <input type="tel" name="number" class="form-control rounded-pill">
-            <br>
-            <label for="">Enter Your Password :</label>
-            <input type="password" name="password" class="form-control rounded-pill">
-            <br>
-            <label for="">Select Your Gender :</label>
-            <input type="radio" name="gen" value="male" id="" class="form-radio"> Male
-            <input type="radio" name="gen" value="female" id="" class="form-radio"> female
-            <br>
-            <br>
-            <label for="">Select Your Course :</label>
-            <select name="course" id="" class="form-control rounded-pill">
-                <option value="">--Select Course--</option>
-                {%for c in cr%}
-                <option value="{{c.course}}">{{c.course}}</option>
-                {%endfor%}
-            </select>
-            <br>
-            <label for="">Select Your Branch : </label>
-            <select name="branch" id="" class="form-control rounded-pill">
-                <option value="">--Select Branch--</option>
-                {%for b in br%}
-                <option value="{{b.branch}}">{{b.branch}}</option>
-                {%endfor%}
-            </select>
-            <br>
-            <label for="">Select Your Session : </label>
-            <select name="session" id="" class="form-control rounded-pill">
-                <option value="">--Select Session</option>
-                {%for s in se%}
-                <option value="{{s.session}}">{{s.session}}</option>
-                {%endfor%}
-            </select>
-            <br>
-            <label for="">Enter Your Address : </label>
-            <textarea name="address" id="" class="form-control rounded-pill" ></textarea>
-            <br>
-            <label for="">Upload Pic : </label>
-            <input type="file" name="pic" id="" class=" form-control rounded-pill">
-            <br>
-            <input type="submit" value="Register" class="btn btn-primary">
+{% extends 'parent.html' %}
+{% load static %}
 
-        </form>
+{% block title %}Student Registration - Biotech Park, Lucknow{% endblock %}
 
+{% block body %}
+<section class="py-5 bg-light">
+  <div class="container px-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+          <div class="bg-mix text-white p-4 p-md-5 text-center">
+            <div class="icon-box-emerald bg-white text-success mx-auto mb-3" style="width: 60px; height: 60px; border-radius: 16px;">
+              <i class="fa-solid fa-user-plus fs-3"></i>
+            </div>
+            <h2 class="fw-bold mb-1">Student Registration Form</h2>
+            <p class="text-white-50 mb-0">Fill out your details to enroll in Biotech Park training courses</p>
+          </div>
+
+          <div class="card-body p-4 p-md-5 bg-white">
+            <form action="{% url 'mainapp:registration' %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <h5 class="fw-bold text-success mb-3 pb-2 border-bottom"><i class="fa-solid fa-user me-2"></i>Personal Information</h5>
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Full Name <span class="text-danger">*</span></label>
+                  <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Father's Name <span class="text-danger">*</span></label>
+                  <input type="text" name="fname" class="form-control" placeholder="Father's Full Name" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Mother's Name <span class="text-danger">*</span></label>
+                  <input type="text" name="mname" class="form-control" placeholder="Mother's Full Name" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Gender <span class="text-danger">*</span></label>
+                  <div class="pt-2">
+                    <div class="form-check form-check-inline me-3">
+                      <input class="form-check-input" type="radio" name="gen" id="genMale" value="Male" checked>
+                      <label class="form-check-label" for="genMale">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline me-3">
+                      <input class="form-check-input" type="radio" name="gen" id="genFemale" value="Female">
+                      <label class="form-check-label" for="genFemale">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gen" id="genOther" value="Other">
+                      <label class="form-check-label" for="genOther">Other</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h5 class="fw-bold text-success mb-3 pb-2 border-bottom"><i class="fa-solid fa-address-book me-2"></i>Contact Credentials</h5>
+              <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold">Email Address <span class="text-danger">*</span></label>
+                  <input type="email" name="email" class="form-control" placeholder="student@example.com" required>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold">Phone Number <span class="text-danger">*</span></label>
+                  <input type="tel" name="number" class="form-control" placeholder="+91 9876543210" required>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold">Set Password <span class="text-danger">*</span></label>
+                  <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                </div>
+              </div>
+
+              <h5 class="fw-bold text-success mb-3 pb-2 border-bottom"><i class="fa-solid fa-graduation-cap me-2"></i>Academic Selection</h5>
+              <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold">Select Course <span class="text-danger">*</span></label>
+                  <select name="course" class="form-select" required>
+                    <option value="">-- Choose Course --</option>
+                    {% for c in cr %}
+                      <option value="{{ c.course }}">{{ c.course }}</option>
+                    {% empty %}
+                      <option value="Biotechnology">Biotechnology</option>
+                      <option value="Bioinformatics">Bioinformatics</option>
+                      <option value="Microbiology">Microbiology</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold">Select Branch <span class="text-danger">*</span></label>
+                  <select name="branch" class="form-select" required>
+                    <option value="">-- Choose Branch --</option>
+                    {% for b in br %}
+                      <option value="{{ b.branch }}">{{ b.branch }}</option>
+                    {% empty %}
+                      <option value="B.Tech">B.Tech</option>
+                      <option value="M.Tech">M.Tech</option>
+                      <option value="B.Sc">B.Sc</option>
+                      <option value="M.Sc">M.Sc</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold">Select Session <span class="text-danger">*</span></label>
+                  <select name="session" class="form-select" required>
+                    <option value="">-- Choose Session --</option>
+                    {% for s in se %}
+                      <option value="{{ s.session }}">{{ s.session }}</option>
+                    {% empty %}
+                      <option value="2024-2025">2024-2025</option>
+                      <option value="2025-2026">2025-2026</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+
+              <h5 class="fw-bold text-success mb-3 pb-2 border-bottom"><i class="fa-solid fa-file-upload me-2"></i>Address & Profile Picture</h5>
+              <div class="row g-3 mb-4">
+                <div class="col-md-8">
+                  <label class="form-label small fw-semibold">Residential Address <span class="text-danger">*</span></label>
+                  <textarea name="address" class="form-control" rows="3" placeholder="Enter complete address..." required></textarea>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold">Upload Student Pic</label>
+                  <input type="file" name="pic" class="form-control" accept="image/*">
+                  <small class="text-muted d-block mt-1">PNG, JPG or JPEG allowed.</small>
+                </div>
+              </div>
+
+              <div class="text-center pt-3">
+                <button type="submit" class="btn btn-success btn-lg rounded-pill px-5 shadow fw-bold">
+                  <i class="fa-solid fa-paper-plane me-2"></i> Submit Registration
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-{%endblock%}
+  </div>
+</section>
+{% endblock %}

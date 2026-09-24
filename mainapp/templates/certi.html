@@ -1,68 +1,58 @@
-{%extends 'parent.html' %}
-{%load static%}
-{%block body%}
+{% extends 'parent.html' %}
+{% load static %}
 
-<!-- service strt -->
-             <div class="container-fluid p-0 pt-1 ">
-             <div class="row p-5"style="background-image:url({% static 'imgs/tt1.jpg'%});background-repeat: no-repeat;background-size: 100%;" >
-                <div class="col-sm-12  text-center text-white py-5 p-5">
-                    <h1> Our Certification</h1>
+{% block title %}Certifications - Biotech Park, Lucknow{% endblock %}
 
-                </div>
-             </div>
-             </div>
-            <!-- service end --> 
-             <!-- text strt -->
-              <div class="container-fluid">
-                <div class="row  p-5">
-                  <div class="col-sm-1"></div>
-                  
-                  <div class="col-sm-10  p-2 border border-2" style="border-radius:5px">
-                    <p>
-                        <h5>Certification</h3>
-                    <ul>
-                        <li>DSIR Recognition</li>
-                        <li>Licensing Of Ayurvadic Testing Laboratory (2016)</li>
-                        <li>NABL Accreditation as per ISO/IEC 17025:2005 of QAQC Laboratory (2018-2020)</li>
-                        <li>Quality Management System (ISO 9001: 2008) of QAQC Laboratory (2009)</li>
-                        <li>Environmental Management System (ISO 14001: 2015) Certification of Biotech Park, Lucknow</li>
-                        <li>Approved Government Training Partner of ‘Uttar Pradesh Skill Development Mission’</li>
-                    </ul>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-10 p-5">
-                        <div class="row row-cols-1 row-cols-md-4 g-4">
-                          <div class="col">
-                            <div class="card h-100"style="box-shadow:5px 5px 5px 0px grey">
-                              <img src="{% static 'img/cer1.jpg'%}" class="card-img-top" alt="...">
-                              
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="card h-100"style="box-shadow:5px 5px 5px 0px grey">
-                              <img src="{%static 'img/cer2.png'%}" class="card-img-top" alt="...">
-                              
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="card h-100"style="box-shadow:5px 5px 5px 0px grey">
-                              <img src="{%static 'img/cer3.jpeg'%}" class="card-img-top" alt="...">
-                              
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="card h-100"style="box-shadow:5px 5px 5px 0px grey">
-                              <img src="{%static 'img/cer4.jpeg'%}" class="card-img-top" alt="...">
-                              
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-1"></div>
-                </div>
-              </div>
-             <!-- text end -->
+{% block body %}
+<section class="bg-mix text-white py-5">
+  <div class="container text-center py-4 px-4">
+    <span class="badge bg-light text-success fw-bold px-3 py-2 rounded-pill mb-2">Quality Standards</span>
+    <h1 class="display-5 fw-bold mb-2">Accreditations & Certifications</h1>
+    <p class="lead text-white-50 max-w-2xl mx-auto">Adhering to National & International Laboratory Benchmarks</p>
+  </div>
+</section>
 
-{%endblock%}
+<section class="py-5 bg-light">
+  <div class="container px-4">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-md rounded-4 p-4 p-md-5 bg-white">
+          <h4 class="fw-bold text-dark mb-4 border-bottom pb-2">National Accreditations</h4>
+          <ul class="list-group list-group-flush leading-relaxed">
+            <li class="list-group-item border-0 px-0 py-2"><i class="fa-solid fa-square-check text-success me-2"></i> <strong>DSIR Recognition:</strong> Approved Scientific & Industrial Research Organization.</li>
+            <li class="list-group-item border-0 px-0 py-2"><i class="fa-solid fa-square-check text-success me-2"></i> <strong>Ayurvedic Testing Laboratory:</strong> Licensed testing laboratory (2016).</li>
+            <li class="list-group-item border-0 px-0 py-2"><i class="fa-solid fa-square-check text-success me-2"></i> <strong>NABL Accreditation:</strong> ISO/IEC 17025:2005 for QA/QC Testing Laboratory.</li>
+            <li class="list-group-item border-0 px-0 py-2"><i class="fa-solid fa-square-check text-success me-2"></i> <strong>ISO 9001:2008 Certification:</strong> Quality Management System.</li>
+            <li class="list-group-item border-0 px-0 py-2"><i class="fa-solid fa-square-check text-success me-2"></i> <strong>ISO 14001:2015 Certification:</strong> Environmental Management System of Biotech Park campus.</li>
+            <li class="list-group-item border-0 px-0 py-2"><i class="fa-solid fa-square-check text-success me-2"></i> <strong>UPSDM Partner:</strong> Approved Training Partner of 'Uttar Pradesh Skill Development Mission'.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificate Images -->
+    <div class="row g-4">
+      <div class="col-md-3 col-6">
+        <div class="card card-hover border-0 shadow-sm p-2 bg-white">
+          <img src="{% static 'img/cer1.jpg' %}" class="img-fluid rounded" alt="Certification 1">
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="card card-hover border-0 shadow-sm p-2 bg-white">
+          <img src="{% static 'img/cer2.png' %}" class="img-fluid rounded" alt="Certification 2">
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="card card-hover border-0 shadow-sm p-2 bg-white">
+          <img src="{% static 'img/cer3.jpeg' %}" class="img-fluid rounded" alt="Certification 3">
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="card card-hover border-0 shadow-sm p-2 bg-white">
+          <img src="{% static 'img/cer4.jpeg' %}" class="img-fluid rounded" alt="Certification 4">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

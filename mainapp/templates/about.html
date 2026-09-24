@@ -1,10 +1,71 @@
-{%extends 'parent.html'%}
+{% extends 'parent.html' %}
+{% load static %}
 
+{% block title %}About Us - Biotech Park, Lucknow{% endblock %}
 
-{%block body%}
-     <h2 class="my-5">About Page</h2>
-{%endblock%} 
+{% block body %}
+<!-- Page Header -->
+<section class="bg-mix text-white py-5">
+  <div class="container text-center py-4 px-4">
+    <span class="badge bg-light text-success fw-bold px-3 py-2 rounded-pill mb-2">Who We Are</span>
+    <h1 class="display-5 fw-bold mb-2">About Biotech Park, Lucknow</h1>
+    <p class="lead text-white-50 max-w-2xl mx-auto">India's Leading Biotechnology Hub & Scientific Incubator</p>
+  </div>
+</section>
 
-{%block title%}
-  About Page
-{%endblock%}  
+<!-- Main About Content -->
+<section class="py-5 bg-white">
+  <div class="container px-4">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="text-success fw-bold text-uppercase tracking-widest small">Our Heritage</span>
+        <h2 class="display-6 fw-bold mb-4">Empowering Science, Innovation & Enterprise</h2>
+        <p class="text-muted leading-relaxed mb-3 text-justify">
+          The Biotechnology Park in Lucknow, "The City of Nawabs," has transformed Lucknow into a leading Biotechnology City in North India. Established in 2002 through a partnership between the Department of Biotechnology (DBT), Government of India, and the Department of Science and Technology (DST), Government of Uttar Pradesh, it became fully operational in 2007.
+        </p>
+        <p class="text-muted leading-relaxed text-justify">
+          Registered under the Indian Societies Act of 1860, the park operates under a robust governance framework ensuring efficiency, transparency, and accountability. Located strategically in Lucknow, the park is a hub for biotechnology-driven enterprises, catalyzing advancements in agriculture, healthcare, and industrial applications.
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'img/bio tech park.jpeg' %}" class="img-fluid rounded-4 shadow-lg border" alt="Biotech Park Building">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Objectives & Pillars -->
+<section class="py-5 bg-light">
+  <div class="container px-4">
+    <div class="text-center max-w-2xl mx-auto mb-5">
+      <span class="text-success fw-bold text-uppercase tracking-widest small">Core Focus</span>
+      <h2 class="display-6 fw-bold mt-1">Our Strategic Objectives</h2>
+      <div class="mx-auto bg-success rounded-pill" style="height: 4px; width: 80px;"></div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 card-hover p-4 text-center border-0 shadow-sm">
+          <div class="icon-box-emerald mx-auto mb-3"><i class="fa-solid fa-microscope"></i></div>
+          <h5 class="fw-bold mb-2">Research & Incubation</h5>
+          <p class="text-muted small mb-0">Providing laboratory space, pilot scale facilities and incubation for biotech startups.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 card-hover p-4 text-center border-0 shadow-sm">
+          <div class="icon-box-blue mx-auto mb-3"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h5 class="fw-bold mb-2">Human Resource Development</h5>
+          <p class="text-muted small mb-0">Conducting specialized training programs and workshops for students and researchers.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 card-hover p-4 text-center border-0 shadow-sm">
+          <div class="icon-box-purple mx-auto mb-3"><i class="fa-solid fa-handshake"></i></div>
+          <h5 class="fw-bold mb-2">Technology Commercialization</h5>
+          <p class="text-muted small mb-0">Bridging academic discoveries with industrial manufacturing and global markets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

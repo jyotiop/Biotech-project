@@ -1,30 +1,42 @@
 {% extends 'stuparent.html' %}
-{% block body %}
+{% load static %}
 
-<div class="row">
-  <div class="col-sm-12">
-    <h2 class="text-center text-light mt-2">Feedback</h2>
+{% block page_title %}<i class="fa-solid fa-comment-dots text-success me-2"></i> Submit Feedback or Complaint{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+      <h4 class="fw-bold text-dark mb-4 border-bottom pb-2">Submit Feedback / Query / Complaint</h4>
+
+      <form action="{% url 'studentapp:stufeedback' %}" method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label class="form-label small fw-semibold">Feedback Type <span class="text-danger">*</span></label>
+          <select name="feedtype" class="form-select" required>
+            <option value="">-- Choose Category --</option>
+            <option value="Feedback">Feedback</option>
+            <option value="Suggestion">Suggestion</option>
+            <option value="Complain">Complain</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label small fw-semibold">Subject / Title <span class="text-danger">*</span></label>
+          <input type="text" name="title" class="form-control" placeholder="Brief subject..." required>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label small fw-semibold">Detailed Description <span class="text-danger">*</span></label>
+          <textarea name="desc" class="form-control" rows="5" placeholder="Provide full details of your feedback or suggestion..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-lg rounded-pill px-5 shadow-sm fw-bold">
+          <i class="fa-solid fa-paper-plane me-2"></i> Submit Feedback
+        </button>
+      </form>
     </div>
-    </div>
-<div class="row">
-  <div class="col-md-8 mx-auto">
-    <form action="" method="post" class="w-75 rounded-3 bg-light shadow-lg mx-auto p-5">
-      {%csrf_token%}
-      <h5>Add Feedback</h5>
-      <br>
-      <select name="feedtype" class="form-control border border-dark" id="">
-        <option value="">--Select Feedback Type--</option>
-         <option value="Feedback">Feedback</option>
-          <option value="Suggestion">Suggestion</option>
-           <option value="Complain">Complain</option>
-      </select>
-      <br>
-      <input type="text" placeholder="Enter Title" name="title" id="" class="form-control border border-dark">
-      <br>
-      <textarea name="desc" placeholder="Enter Description" id="" class="form-control border border-dark"></textarea>
-      <br>
-      <input type="submit" value="Add Feedback" class="btn btn-dark form-control">
-    </form>
   </div>
 </div>
 {% endblock %}

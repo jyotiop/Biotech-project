@@ -1,46 +1,67 @@
-{%extends 'adparent.html'%}
-{%block d%}
-    :: View Student
-{%endblock%}    
-{%block body%}
- <div class="row my-5">
-      <div class="col-md-8 p-5 mx-auto bg-light rounded-3 table-responsive shadow-lg">
-         <h3 class="text-dark mb-4 fw-bold"><i class="fa fa-user text-info me-2 fa-bounce"></i>View Student</h3>
-         <table class="table table-hover align-middle text-center shadow-sm-rounded-3 overflow-hidden">
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">S.no</th>
-                    <th scope="col">Course</th>
-                    <th scope="col">Branch</th>
-                    <th scope="col">Session</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">F'name</th>
-                    <th scope="col">M'name</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Address</th>
-                    <th scope="col" colspan="3">File</th>
-                </tr>
-                </thead>
-                <tbody>
-                    {%for i in st%}
-                    <tr>
-                        <td>{{forloop.counter}}</td>
-                        <td>{{i.course}}</td>
-                        <td>{{i.branch}}</td>
-                        <td>{{i.session}}</td>
-                        <td>{{i.name}}</td>
-                        <td>{{i.fname}}</td>
-                        <td>{{i.mname}}</td>
-                        <td>{{i.number}}</td>
-                        <td>{{i.email}}</td>
-                        <td>{{i.gender}}</td>
-                        <td>{{i.address}}</td>
-                        <td>{{i.file_name}}</td>
-                        <td><a href="/media/{{i.pic}}" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a></td>
-                    </tr>
-                {%endfor%}
-                    </tbody>
+{% extends 'adparent.html' %}
+{% load static %}
 
-{%endblock%}
+{% block page_title %}<i class="fa-solid fa-users text-success me-2"></i> Registered Students List{% endblock %}
+
+{% block body %}
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+  <div class="card-header bg-white py-3 border-0 d-flex align-items-center justify-content-between">
+    <h5 class="fw-bold mb-0 text-dark">All Student Registrations</h5>
+    <span class="badge bg-success px-3 py-2 rounded-pill">Total: {{ st|length }}</span>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Pic</th>
+          <th>Student Name</th>
+          <th>Parent's Name</th>
+          <th>Contact & Email</th>
+          <th>Course Details</th>
+          <th>Gender</th>
+          <th>Reg Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in st %}
+          <tr>
+            <td class="fw-bold">{{ forloop.counter }}</td>
+            <td>
+              {% if s.pic %}
+                <img src="/media/{{ s.pic }}" alt="{{ s.name }}" class="rounded-circle border" style="width: 44px; height: 44px; object-fit: cover;">
+              {% else %}
+                <div class="icon-box-emerald small" style="width: 44px; height: 44px;"><i class="fa-solid fa-user"></i></div>
+              {% endif %}
+            </td>
+            <td>
+              <div class="fw-bold text-dark">{{ s.name }}</div>
+              <small class="text-muted d-block"><i class="fa-solid fa-location-dot me-1"></i>{{ s.address|truncatechars:25 }}</small>
+            </td>
+            <td>
+              <div class="small"><strong>F:</strong> {{ s.fname }}</div>
+              <div class="small"><strong>M:</strong> {{ s.mname }}</div>
+            </td>
+            <td>
+              <div class="small fw-semibold"><i class="fa-solid fa-phone me-1 text-success"></i>{{ s.number }}</div>
+              <div class="small text-muted"><i class="fa-solid fa-envelope me-1 text-primary"></i>{{ s.email }}</div>
+            </td>
+            <td>
+              <span class="badge bg-primary bg-opacity-10 text-primary">{{ s.course }}</span>
+              <span class="badge bg-success bg-opacity-10 text-success">{{ s.branch }}</span>
+              <div class="small text-muted mt-1">{{ s.session }}</div>
+            </td>
+            <td><span class="badge bg-secondary">{{ s.gender }}</span></td>
+            <td class="small text-muted">{{ s.regdate }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="8" class="text-center text-muted py-4">No registered students found in database.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

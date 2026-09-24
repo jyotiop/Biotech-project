@@ -1,0 +1,48 @@
+{% extends 'adparent.html' %}
+{% load static %}
+
+{% block page_title %}<i class="fa-solid fa-envelope-open-text text-success me-2"></i> Public Website Enquiries{% endblock %}
+
+{% block body %}
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+  <div class="card-header bg-white py-3 border-0 d-flex align-items-center justify-content-between">
+    <h5 class="fw-bold mb-0 text-dark">Received Messages & Queries</h5>
+    <span class="badge bg-primary px-3 py-2 rounded-pill">Total: {{ enquiries|length }}</span>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Visitor Name</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>Message Details</th>
+          <th>Received Date</th>
+          <th class="text-end">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in enquiries %}
+          <tr>
+            <td class="fw-bold">{{ forloop.counter }}</td>
+            <td class="fw-bold text-dark">{{ e.name }}</td>
+            <td><a href="tel:{{ e.mobile }}" class="text-decoration-none text-success"><i class="fa-solid fa-phone me-1"></i>{{ e.mobile }}</a></td>
+            <td><a href="mailto:{{ e.email }}" class="text-decoration-none text-primary"><i class="fa-solid fa-envelope me-1"></i>{{ e.email }}</a></td>
+            <td class="small text-muted" style="max-width: 300px;">{{ e.message }}</td>
+            <td class="small text-muted">{{ e.date|date:"M d, Y H:i" }}</td>
+            <td class="text-end">
+              <a href="{% url 'adminapp:deleteenquiry' e.id %}" onclick="return confirm('Delete this enquiry record?');" class="btn btn-sm btn-outline-danger rounded-circle" title="Delete"><i class="fa-solid fa-trash"></i></a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="7" class="text-center text-muted py-4">No enquiries received yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

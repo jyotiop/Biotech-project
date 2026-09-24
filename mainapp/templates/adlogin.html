@@ -1,23 +1,47 @@
-{%extends 'parent.html'%}
-{%block body%}
+{% extends 'parent.html' %}
+{% load static %}
 
-<!-- Admin login form start -->
+{% block title %}Admin Login - Biotech Park, Lucknow{% endblock %}
 
-<div class="row">
-    <div class="col-md-8 mx-auto p-5">
-        <form action="" method="post" class="W-75 mx-auto p-5  rounded-4 shadow-lg bg-dark text-light">
-            {%csrf_token%}
-            <h5>Admin Login</h5>
-            <br>
-            <label for="">Enter Email</label>
-            <input type="email" name="email" class="form-control rounded-pill">
-            <br>
-            <label for="">Enter Password</label>
-            <input type="password" name="password" name="email" class="form-control rounded-pill">
-            <br>
-            <input type="submit" value="Login" class="btn btn-primary form-control">        
-        </form>
+{% block body %}
+<section class="py-5 min-vh-75 d-flex align-items-center bg-light">
+  <div class="container px-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-5">
+        <div class="form-glass-dark p-4 p-md-5 rounded-4 shadow-lg">
+          <div class="text-center mb-4">
+            <div class="icon-box-blue mx-auto mb-3" style="width: 64px; height: 64px; border-radius: 18px;">
+              <i class="fa-solid fa-user-shield fs-2"></i>
+            </div>
+            <h3 class="fw-bold text-white mb-1">Admin Portal</h3>
+            <p class="text-white-50 small">Enter your administrative credentials to manage the portal</p>
+          </div>
+
+          <form action="{% url 'mainapp:adlogin' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="adminEmail" class="form-label text-white-50 small fw-semibold">Admin Email</label>
+              <div class="input-group">
+                <span class="input-group-text bg-dark border-secondary text-white-50"><i class="fa-solid fa-envelope"></i></span>
+                <input type="email" id="adminEmail" name="email" class="form-control" placeholder="admin@biotechpark.org.in" required>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="adminPass" class="form-label text-white-50 small fw-semibold">Password</label>
+              <div class="input-group">
+                <span class="input-group-text bg-dark border-secondary text-white-50"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" id="adminPass" name="password" class="form-control" placeholder="••••••••" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 py-2.5 rounded-3 fw-bold shadow-sm">
+              <i class="fa-solid fa-right-to-bracket me-2"></i> Login to Admin Dashboard
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
-<!--Admin login  form end  -->
-{%endblock%}
+  </div>
+</section>
+{% endblock %}

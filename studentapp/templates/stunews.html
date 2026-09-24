@@ -1,36 +1,37 @@
 {% extends 'stuparent.html' %}
+{% load static %}
 
+{% block page_title %}<i class="fa-solid fa-newspaper text-success me-2"></i> News & Announcements{% endblock %}
 
 {% block body %}
-<div class="row mt-5">
-<div class="col-md-8 p-5 mx-auto bg-white rounded-3 table-responsive shadow-lg">
-<h3 class="text-dark mb-4 fw-bold"><i class="fa fa-newspaper text-info me-2 fa-bounce"></i>View News</h3>
-<table class="table table-hover align-middle text-center shadow-sm rounded-3 overflow-hidden">
-   <thead class="table-dark  "></thead>
-      <div class="table-responsive ">
-        <table class="table table-dark table-hover rounded-4 mx-auto ">
-            <thead class="table-dark  ">
-            <thead>
-              <tr>
-                <th scope="col">S.no</th>
-                <th scope="col">Title</th>
-                <th scope="col">Desc</th>
-                <th scope="col" colspan="3">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for n in news %}
-              <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ n.title }}</td>
-                <td>{{ n.desc }}</td>
-                <td colspan="3" class="text-center"></td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      </div>
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+  <div class="card-header bg-white py-3 border-0">
+    <h5 class="fw-bold mb-0 text-dark">Latest News & Bulletins</h5>
+  </div>
 
- {%endblock%}     
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Announcement Title</th>
+          <th>Description & Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for n in news %}
+          <tr>
+            <td class="fw-bold">{{ forloop.counter }}</td>
+            <td class="fw-bold text-dark" style="min-width: 180px;">{{ n.title }}</td>
+            <td class="small text-muted">{{ n.desc }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3" class="text-center text-muted py-4">No news announcements published yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

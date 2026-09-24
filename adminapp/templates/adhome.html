@@ -1,71 +1,155 @@
-{%extends 'adparent.html'%}
-{%block d%}
-::index
-{%endblock%}
-{%block body%}
-<div class="row">
-    <div class="col-sm-12">
-        <h1 class="text-center text-light mt-2">
-            <span class="text-info">Dashboard</span> Overview
-        </h1>
+{% extends 'adparent.html' %}
+{% load static %}
+
+{% block page_title %}<i class="fa-solid fa-gauge text-success me-2"></i> Dashboard Overview{% endblock %}
+
+{% block body %}
+<!-- Metrics Row -->
+<div class="row g-4 mb-4">
+  <div class="col-md-6 col-lg-3">
+    <div class="stat-card-custom d-flex align-items-center justify-content-between">
+      <div>
+        <h6 class="text-muted small fw-semibold text-uppercase mb-1">Study Materials</h6>
+        <h2 class="fw-bold mb-0 text-dark">{{ stl }}</h2>
+      </div>
+      <div class="icon-box-emerald"><i class="fa-solid fa-file-lines"></i></div>
     </div>
+  </div>
+
+  <div class="col-md-6 col-lg-3">
+    <div class="stat-card-custom d-flex align-items-center justify-content-between">
+      <div>
+        <h6 class="text-muted small fw-semibold text-uppercase mb-1">Registered Students</h6>
+        <h2 class="fw-bold mb-0 text-dark">{{ stul }}</h2>
+      </div>
+      <div class="icon-box-blue"><i class="fa-solid fa-user-graduate"></i></div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-lg-3">
+    <div class="stat-card-custom d-flex align-items-center justify-content-between">
+      <div>
+        <h6 class="text-muted small fw-semibold text-uppercase mb-1">News Items</h6>
+        <h2 class="fw-bold mb-0 text-dark">{{ nl }}</h2>
+      </div>
+      <div class="icon-box-purple"><i class="fa-solid fa-newspaper"></i></div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-lg-3">
+    <div class="stat-card-custom d-flex align-items-center justify-content-between">
+      <div>
+        <h6 class="text-muted small fw-semibold text-uppercase mb-1">Feedbacks & Queries</h6>
+        <h2 class="fw-bold mb-0 text-dark">{{ fel }}</h2>
+      </div>
+      <div class="icon-box-amber"><i class="fa-solid fa-comments"></i></div>
+    </div>
+  </div>
 </div>
-<div class="row mt-5">
-    <div class="col-sm-11 mx-auto bg-light p-5 rounded-5 shadow-lg">
-        <div class="row my-5">
-            <div class="col-md-5 p-5 mx-2 text-light bg-dark rounded-5 shadow-lg d-flex justify-content-between aa">
-                <i class="fa fa-book fs-1 my-auto"></i>
-                <div>
-                    <h4 class="text-center">{{stl}}</h4>
-                    <h5>Study Material</h5>
-                </div>
 
-            </div>
-
-            <div class="col-md-5 p-5 mx-2 text-light bg-dark rounded-5 shadow-lg d-flex justify-content-between aa">
-                <i class="fa fa-user fs-1 my-auto"></i>
-                <div class="mx-auto">
-                    <h4 class="text-center">{{stul}}</h4>
-                    <h5>Student</h5>
-                </div>
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-md-5 p-5 mx-2 text-light bg-dark rounded-5 shadow-lg d-flex justify-content-between aa">
-                <i class="fa fa-newspaper fs-1 my-auto"></i>
-                <div>
-                    <h4 class="text-center">{{nl}}</h4>
-                    <h5>News</h5>
-                </div>
-
-            </div>
-
-            <div class="col-md-5 p-5 mx-2 text-light bg-dark rounded-5 shadow-lg d-flex justify-content-between aa">
-                <i class="fa fa-message fs-1 my-auto"></i>
-                <div class="mx-auto">
-                    <h4 class="text-center">{{fel}}</h4>
-                    <h5>Feedback</h5>
-                </div>
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-md-5 p-5 mx-2 text-light bg-dark rounded-5 shadow-lg d-flex justify-content-between aa">
-                <i class="fa fa-message fs-1 my-auto"></i>
-                <div>
-                    <h4 class="text-center">{{col}}</h4>
-                    <h5>Complain</h5>
-                </div>
-
-            </div>
-
-            <div class="col-md-5 p-5 mx-2 text-light bg-dark rounded-5 shadow-lg d-flex justify-content-between aa">
-                <i class="fa fa-message fs-1 my-auto"></i>
-                <div class="mx-auto">
-                    <h4 class="text-center">{{sugl}}</h4>
-                    <h5>Suggestion</h5>
-                </div>
-            </div>
-        </div>
+<!-- Secondary Stats Row -->
+<div class="row g-4 mb-4">
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm rounded-4 p-3 bg-white d-flex flex-row align-items-center">
+      <div class="p-3 bg-danger bg-opacity-10 text-danger rounded-3 me-3 fs-4"><i class="fa-solid fa-circle-exclamation"></i></div>
+      <div>
+        <h5 class="fw-bold mb-0">{{ col }}</h5>
+        <small class="text-muted">Complaints Received</small>
+      </div>
     </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm rounded-4 p-3 bg-white d-flex flex-row align-items-center">
+      <div class="p-3 bg-warning bg-opacity-10 text-warning rounded-3 me-3 fs-4"><i class="fa-solid fa-lightbulb"></i></div>
+      <div>
+        <h5 class="fw-bold mb-0">{{ sugl }}</h5>
+        <small class="text-muted">Suggestions Submitted</small>
+      </div>
     </div>
-{%endblock%}
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm rounded-4 p-3 bg-white d-flex flex-row align-items-center">
+      <div class="p-3 bg-info bg-opacity-10 text-info rounded-3 me-3 fs-4"><i class="fa-solid fa-envelope"></i></div>
+      <div>
+        <h5 class="fw-bold mb-0">{{ eql }}</h5>
+        <small class="text-muted">Public Enquiries</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Activity Tables Row -->
+<div class="row g-4">
+  <!-- Recent Students -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+      <div class="card-header bg-white py-3 border-0 d-flex align-items-center justify-content-between">
+        <h6 class="fw-bold mb-0 text-dark"><i class="fa-solid fa-users text-success me-2"></i> Recent Student Registrations</h6>
+        <a href="{% url 'adminapp:adstudent' %}" class="btn btn-sm btn-outline-success rounded-pill">View All</a>
+      </div>
+      <div class="table-responsive">
+        <table class="table align-middle table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Name</th>
+              <th>Course</th>
+              <th>Phone</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for s in recent_students %}
+              <tr>
+                <td class="fw-bold">{{ s.name }}</td>
+                <td><span class="badge bg-success bg-opacity-10 text-success">{{ s.course }}</span></td>
+                <td>{{ s.number }}</td>
+                <td class="small text-muted">{{ s.regdate }}</td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="4" class="text-center text-muted py-3">No recent students registered yet.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Public Enquiries -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+      <div class="card-header bg-white py-3 border-0 d-flex align-items-center justify-content-between">
+        <h6 class="fw-bold mb-0 text-dark"><i class="fa-solid fa-paper-plane text-primary me-2"></i> Recent Public Enquiries</h6>
+        <a href="{% url 'adminapp:viewenquiries' %}" class="btn btn-sm btn-outline-primary rounded-pill">View All</a>
+      </div>
+      <div class="table-responsive">
+        <table class="table align-middle table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for e in recent_enquiries %}
+              <tr>
+                <td class="fw-bold">{{ e.name }}</td>
+                <td class="small">{{ e.email }}</td>
+                <td class="small">{{ e.mobile }}</td>
+                <td class="small text-muted">{{ e.date|date:"M d, Y" }}</td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="4" class="text-center text-muted py-3">No enquiries received yet.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

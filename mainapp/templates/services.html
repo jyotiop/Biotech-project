@@ -1,30 +1,50 @@
-{%extends 'parent.html' %}
-{%load static%}
-{%block body%}
+{% extends 'parent.html' %}
+{% load static %}
 
+{% block title %}Services & Facilities - Biotech Park, Lucknow{% endblock %}
 
-<!-- service strt -->
-             <div class="container-fluid p-0 pt-1 ">
-             <div class="row p-5"style="background-image:url({%static 'img/tt1.jpg'%});background-repeat: no-repeat;background-size: 100%;" >
-                <div class="col-sm-12  text-center text-white py-5 p-5">
-                    <h1>OUR SERVICE</h1>
-                </div>
-             </div>
-             </div>
-            <!-- service end --> 
-             <!-- text strt -->
-              <div class="container-fluid">
-                <div class="row p-5">
-                  <div class="col-sm-1"></div>
-                  
-                  <div class="col-sm-10  p-5 border border-2" style="box-shadow:5px 5px 5px 0px grey">
-                    <p>
-                    <strong>Advisory services:</strong>Consulting, mentoring, and feasibility reports for entrepreneurs, Business Plan preparation and incubation. <br> <br>
-                    <strong>Resource services:</strong> Information related to biotech business, IPR, knowledge repository, pilot testing, availability of a pool of intellectual capital, network. conference facilities, training. <br><br>
-                    <strong>Capacity Building: </strong>Conference seminars, workshops, training sessions specifically in creating knowledge platforms in biotechnology area around its stakeholders, technology translation & commercialization.
-                  </div>
-                  <div class="col-sm-1"></div>
-                </div>
-              </div>
-             <!-- text end -->
-{%endblock%}
+{% block body %}
+<section class="bg-mix text-white py-5">
+  <div class="container text-center py-4 px-4">
+    <span class="badge bg-light text-success fw-bold px-3 py-2 rounded-pill mb-2">Our Capabilities</span>
+    <h1 class="display-5 fw-bold mb-2">Services & Facilities</h1>
+    <p class="lead text-white-50 max-w-2xl mx-auto">World-Class Research Infrastructure & Incubation Support</p>
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+  <div class="container px-4">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 card-hover p-4 border-0 shadow-sm">
+          <div class="icon-box-emerald mb-3"><i class="fa-solid fa-user-tie"></i></div>
+          <h4 class="fw-bold mb-3">Advisory Services</h4>
+          <p class="text-muted small leading-relaxed">
+            Consulting, mentoring, and feasibility reports for entrepreneurs, Business Plan preparation, IPR protection and startup incubation guidance.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 card-hover p-4 border-0 shadow-sm">
+          <div class="icon-box-blue mb-3"><i class="fa-solid fa-cubes"></i></div>
+          <h4 class="fw-bold mb-3">Resource Services</h4>
+          <p class="text-muted small leading-relaxed">
+            Biotech business information, knowledge repositories, pilot scale testing, analytical instrument pool, modern conference halls and library networks.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 card-hover p-4 border-0 shadow-sm">
+          <div class="icon-box-purple mb-3"><i class="fa-solid fa-chart-line"></i></div>
+          <h4 class="fw-bold mb-3">Capacity Building</h4>
+          <p class="text-muted small leading-relaxed">
+            Conferences, seminars, hands-on training workshops in molecular biology, bioinformatics, tissue culture and technology commercialization.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
